@@ -83,6 +83,7 @@ void borrarLista(Lista *l){
         *l = aux->sig;
         free(aux);
     }
+    *l = NULL;
 } //elimina todos los nodos de la lista y la deja vacía
 
 void borrarListaR(Lista *l){

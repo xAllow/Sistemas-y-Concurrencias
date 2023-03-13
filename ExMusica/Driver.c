@@ -26,12 +26,12 @@ int main(){
 	
 	insertar(&lista, "La vida sigue igual");
 	
-	insertar (&lista, "Chica de ayer")
+	insertar (&lista, "Chica de ayer");
 	
 	mostrar(lista);	
 	
 	//PARTE 2
-	/*
+
 	for (i=0; i<20; i++){
 		siguiente(&lista,cancion);
 		printf("%d: Reproduciendo canción %s\n",i,cancion);
@@ -64,7 +64,7 @@ int main(){
 	}
 	
 	mostrar(lista);	
-	*/
+	
 	
 	//PARTE 3
 	/*cargarListaCanciones(&lista,"ListaCanciones.bin");
@@ -72,7 +72,7 @@ int main(){
 	guardarListaCanciones(lista, "ListaCanciones.txt");
 	}*/
 
-	borrar(&lista);
-	mostrar(lista);
+	//borrar(&lista);
+	//mostrar(lista);
 	return 0;
 }
