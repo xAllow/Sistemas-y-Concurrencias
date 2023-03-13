@@ -15,7 +15,7 @@
  * crea una lista de habitaciones vacia
  */
 void crear(ListaHab *lh){
-
+    *lh = NULL;
 }
 
 /**
@@ -28,7 +28,31 @@ void crear(ListaHab *lh){
  * menor a mayor)
  */
 void nuevoCliente(ListaHab *lh,unsigned nh,char *nombre,unsigned fs){
+    ListaHab aux = malloc(sizeof(struct Nodo));
+    aux->numHab = nh;
+    aux->fechaSalida = fs;
+    strcpy(aux->nombre, nombre);
+    
+    
+    ListaHab act = *lh;
+    ListaHab ant = NULL;
 
+    if(*lh == NULL){
+        *lh = aux;
+    }
+
+    while(act != NULL && act->numHab < nh){
+        ant = act;
+        act = act->sig;
+    }
+
+    if(act != NULL && act->numHab == nh){
+        strcpy(act->nombre, nombre);
+        act->fechaSalida = fs;
+    } else {
+        ant->sig = aux;
+        aux->sig = act;
+    }
 }
 
 /**
@@ -38,7 +62,10 @@ void nuevoCliente(ListaHab *lh,unsigned nh,char *nombre,unsigned fs){
  * \t habitacion "nh" ocupada por "nombre" con fecha de salida "fs"
  */
 void imprimir(ListaHab lh){
-
+    while(lh != NULL){
+        printf("\t habitancion %d ocupada por %s con fecha de salida %d", lh->numHab, lh->nombre, lh->fechaSalida);
+        lh = lh->sig;
+    }
 }
 
 /**
