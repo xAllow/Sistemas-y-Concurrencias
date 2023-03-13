@@ -21,13 +21,12 @@ int main(){
 	nuevoCliente(&lh,4,"Carmen Pasa",26);
 	nuevoCliente(&lh,7,"Felipe Moreno",26);
 	imprimir(lh);
-	/*
 	printf("\n\nAhora borramos los que salen el día 26\n\n");
 	borrarFechaSalida(&lh,26);
 	imprimir(lh);
 	printf("\n\nAhora borramos toda la lista\n\n");
 	borrar(&lh);
 	imprimir(lh);
-	*/
+
 	return 1;
 }

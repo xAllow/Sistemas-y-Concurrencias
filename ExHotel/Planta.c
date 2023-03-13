@@ -32,15 +32,9 @@ void nuevoCliente(ListaHab *lh,unsigned nh,char *nombre,unsigned fs){
     aux->numHab = nh;
     aux->fechaSalida = fs;
     strcpy(aux->nombre, nombre);
-    
-    
+
     ListaHab act = *lh;
     ListaHab ant = NULL;
-
-    if(*lh == NULL){
-        *lh = aux;
-    }
-
     while(act != NULL && act->numHab < nh){
         ant = act;
         act = act->sig;
@@ -49,8 +43,13 @@ void nuevoCliente(ListaHab *lh,unsigned nh,char *nombre,unsigned fs){
     if(act != NULL && act->numHab == nh){
         strcpy(act->nombre, nombre);
         act->fechaSalida = fs;
+
     } else {
-        ant->sig = aux;
+        if (ant == NULL){
+            *lh = aux;
+        } else {
+            ant->sig = aux;
+        }
         aux->sig = act;
     }
 }
@@ -63,7 +62,7 @@ void nuevoCliente(ListaHab *lh,unsigned nh,char *nombre,unsigned fs){
  */
 void imprimir(ListaHab lh){
     while(lh != NULL){
-        printf("\t habitancion %d ocupada por %s con fecha de salida %d", lh->numHab, lh->nombre, lh->fechaSalida);
+        printf("\n\t habitacion %d ocupada por %s con fecha de salida %d", lh->numHab, lh->nombre, lh->fechaSalida);
         lh = lh->sig;
     }
 }
@@ -72,6 +71,13 @@ void imprimir(ListaHab lh){
  * Borra todos los nodos de la lista y la deja vacía
  */
 void borrar(ListaHab *lh){
+    ListaHab aux = *lh;
+    while(aux != NULL){
+        free(aux);
+        aux = aux->sig;
+    }
+    *lh = NULL;
+    printf("Lista borrada\n");
 
 }
 
@@ -80,5 +86,19 @@ void borrar(ListaHab *lh){
  */
 
 void borrarFechaSalida(ListaHab *lh,unsigned fs){
+    ListaHab act = *lh;
+    ListaHab ant = NULL;
 
-}
+    while(act != NULL){
+        if(act->fechaSalida == fs){
+            if(ant == NULL){
+                *lh = act->sig;
+            }else {
+                ant->sig = act->sig;
+            }
+            free(act);
+        }
+        ant = act;
+        act = act->sig;
+    }
+}   

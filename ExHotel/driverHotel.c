@@ -20,7 +20,7 @@ void cargarHotel(char* nombre, ListaHab* hotel, unsigned nPlantas){
 }
 
 
-int main1(){
+int main(){
 	ListaHab hotel[5];
 	crearHotel(hotel,5);
 	nuevoClienteHotel(hotel,5,13,"Paco Timo",25);
