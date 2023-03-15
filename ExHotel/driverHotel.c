@@ -16,7 +16,16 @@
  * de habitación (al contrario que en la funcion nuevoClienteHotel)
  */
 void cargarHotel(char* nombre, ListaHab* hotel, unsigned nPlantas){
-
+	FILE *f = fopen(nombre, "rt");
+	if(f == NULL){
+		perror("Error");
+	}
+	char nom[30];
+	unsigned fs, nh;
+	while(fscanf(f, "%s %u %u", nom, &nh, &fs) == 3){
+		nuevoClienteHotel(hotel,nPlantas, nh,nom,fs);
+	}
+	fclose(f);	
 }
 
 
@@ -39,8 +48,10 @@ int main(){
 	borrarHotel(hotel,5);
 	imprimirHotel(hotel,5);
 	printf("\n\nHotel borrado\n\n");
+	
 	printf("\n\nAhora cargamos los datos del fichero DatosHotel.txt \n\n");
 	cargarHotel("DatosHotel.txt",hotel,5);
 	imprimirHotel(hotel,5);
+	
 	return 1;
 }

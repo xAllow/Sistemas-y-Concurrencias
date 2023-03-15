@@ -11,7 +11,16 @@
 
 // Lee el fichero y lo introduce en la lista
 void cargarFichero (const char *nombreFich, TListaCircular *lc){
-	// REALIZAR ESTE PROCEDIMIENTO
+	FILE *f = fopen(nombreFich, "rt");
+	if(f == NULL){
+		perror("No se ha podido abrir el fichero");
+	} else {
+		char nombre[30];
+		while(fscanf(f,"%s",nombre) == 1){
+			insertar(&(*lc),nombre);
+		}
+		fclose(f);
+	}
 
 }
 
@@ -45,8 +54,8 @@ void copiarFichero(char* nombreref, char* nombreD){
 
 	}
 }
-/*
-int main2(){
+
+int main(){
 
 	TListaCircular lc;
 	crear(&lc);
@@ -73,8 +82,8 @@ int main2(){
 
 	return 0;
 }
-*/
-int main(){
+
+int main1(){
 	leerFichero("listaNombres.txt");
 	copiarFichero("listaNombre.txt", "tumama.txt");
 }
