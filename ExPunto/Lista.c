@@ -65,8 +65,8 @@ void eliminarPunto(TLista *lista,float x,int* ok){
     if(!buscarPunto(*lista, x)){
         *ok = 0;
     } else {
-        TLista act = *lista;
-        TLista ant = NULL;
+        TLista act = (*lista)->sig;
+        TLista ant = *lista;
         while(act != NULL){
             if(act->punto.x == x){
                 if(ant == NULL){
@@ -120,5 +120,19 @@ void destruir(TLista *lista){
  *
  */
 void leePuntos(TLista *lista,char * nFichero){
-
+    FILE *f = fopen(nFichero, "rb");
+    if(f == NULL){
+        perror("Error al abrir");
+    } else {
+        struct Punto p;
+        int ok;
+        float id[2];
+        *lista = NULL;
+        while(fread(&id,sizeof(float),2, f)==2){
+            p.x = id[0];
+            p.y = id[1];
+            insertarPunto(&(*lista), p, &ok);
+        }
+        fclose(f);
+    }
 }

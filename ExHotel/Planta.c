@@ -93,10 +93,11 @@ void borrarFechaSalida(ListaHab *lh,unsigned fs){
         if(act->fechaSalida == fs){
             if(ant == NULL){
                 *lh = act->sig;
+                free(act);
             }else {
                 ant->sig = act->sig;
+                free(act);
             }
-            free(act);
         }
         ant = act;
         act = act->sig;

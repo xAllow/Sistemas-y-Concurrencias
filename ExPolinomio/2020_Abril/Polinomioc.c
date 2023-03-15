@@ -60,16 +60,16 @@ void insertar(TPolinomio *p,unsigned int coef,unsigned int exp){
             ant = aux;
             aux = aux->sig;
         }
-        if(aux == NULL){
+        if(aux == NULL){ //Se coloca el ultimo
             ant->sig = nuevo;
-        }else if(aux->exp == exp){
+        }else if(aux->exp == exp){ //Se suman coef y se elimina nuevo
             aux->coef += coef;
             free(nuevo);
         }else{
-            if(ant == NULL){
+            if(ant == NULL){ // Se coloca el primero
                 nuevo->sig = *p;
                 *p = nuevo;
-            }else{
+            }else{ //Se coloca entre medias
                 ant->sig = nuevo;
                 nuevo->sig = aux;
             }

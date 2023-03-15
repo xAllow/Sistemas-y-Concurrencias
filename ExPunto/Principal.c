@@ -16,7 +16,7 @@ float f(float x){
 }
 
 
-int main(){
+int main2(){
 
 	srand(time(NULL));
 
@@ -44,7 +44,7 @@ int main(){
     punto.y = f(punto.x);
 	insertarPunto(&l,punto,&ok);
     mostrarLista(l);
-	printf("Eliminar x = 25");
+	printf("Eliminar x = 25\n");
     eliminarPunto(&l,25,&ok);
     mostrarLista(l);
     destruir(&l);
@@ -53,7 +53,7 @@ int main(){
 	
 }
 
-int main2(){
+int main(){
 	TLista l;
 	int ok;
 	leePuntos(&l,"Puntos.bin");

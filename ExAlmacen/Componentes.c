@@ -16,7 +16,7 @@ y devuelve el numero de elementos de dicha lista.
 */
 int Num_Elementos(Lista  lista){
     int elem = 0;
-    while(elem != NULL){
+    while(lista != NULL){
         elem++;
         lista = lista->sig;
     }
@@ -58,7 +58,20 @@ Para cada nodo de la lista, debe almacenarse en el fichero
 el código y el texto de la componente correspondiente.
 */
 void Lista_Salvar( Lista  lista){
-        
+    FILE *f = fopen("examenes.dat", "wb");
+    if(f == NULL){
+        perror("error");
+    } else {
+        int i = 0;
+        int nelems = Num_Elementos(lista);
+        Lista ptr = lista;
+        while(i < nelems){
+            fwrite(&(ptr->codigoComponente), sizeof(long),1,f);
+            fwrite(&(ptr->textoFabricante), sizeof(char),1,f);
+        }
+        i++;
+        fclose(f);
+    }
 }
 
 
@@ -100,24 +113,18 @@ Lista_Extraer toma como parametro un puntero a una Lista y elimina el
 Componente que se encuentra en su ultima posicion.
 */
 void Lista_Extraer(Lista *lista){
-    if(*lista == NULL){
-        printf("Lista vacia");
-    } else {
-        Lista act = *lista;
-        Lista ant = NULL;
-        while(act != NULL){
-            ant = act;
-            act = act->sig;
-        }
-        if(ant == NULL){
-            *lista = NULL;
-            free(act);
-            
-        } else {
-            ant->sig = NULL;
-            free(act);
-        }
+    Lista act = (*lista)->sig;
+    Lista ant = *lista;
+    while(act != NULL){
+        ant = act;
+        act = act->sig;
     }
+    if(ant == NULL){
+        *lista = act->sig;
+    } else {
+        ant->sig = act->sig;
+    }
+    free(act);
 }
 
 /*

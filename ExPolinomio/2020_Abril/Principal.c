@@ -64,13 +64,14 @@ int main(void) {
 	printf("COMPRUEBA QUE SEA 9\n");
 
 	//PARTE 2
-	
+	/*
 	TPolinomio p2;
 
 	polinomioCero(&p2);
 	crearDeFichero(&p2,"monomios.txt");
 	printf("\nPolinomio 2 creado desde fichero: ");
 	imprimir(p2);
+	*/
 	
 	//PARTE 3
 
