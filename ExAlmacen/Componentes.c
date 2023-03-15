@@ -58,18 +58,7 @@ Para cada nodo de la lista, debe almacenarse en el fichero
 el código y el texto de la componente correspondiente.
 */
 void Lista_Salvar( Lista  lista){
-    FILE *f = fopen("examen.dat", "wr");
-    if(f == NULL){
-        perror("no se ha podido");
-    } else {
-        int i = 0;
-        int nelem = Num_Elementos(lista);
-        Lista aux = lista;
         
-        while(i < nelem);
-
-        fclose(f);
-    }
 }
 
 
