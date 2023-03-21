@@ -47,10 +47,10 @@ int main () {
 	printf("Eliminamos proceso 6\n");
 	EliminarProceso(6,&plan);
 	EjecutarProcesos(plan);
-/*
+
 	EscribirFichero("Salida.bin",&plan);
 	EjecutarProcesos(plan);
-*/
+
 	return 0;
 
 }
