@@ -54,7 +54,7 @@ public class Guarderia {
 		mutex.acquire();
 		nAdulto++;
 		System.out.println("Entra el adulto " + id + ". Hay: " + nAdulto + " adultos");
-		if (nBebes <= 3 * nAdulto) {
+		if (nBebes + 1 <= 3 * nAdulto) {
             entraBebe.release();
         }
 		mutex.release();

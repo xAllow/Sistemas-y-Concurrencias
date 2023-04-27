@@ -51,7 +51,8 @@ public class Tiovivo {
 	}
 	
 	public void finViaje () {
-			puedoBajar.release();
+			
 			System.out.println("Ha terminado el viaje!!!");
+			puedoBajar.release();
 	}
 }
