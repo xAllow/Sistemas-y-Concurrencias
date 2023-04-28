@@ -14,7 +14,11 @@ public class Tren {
 	
 	public void viaje(int id) throws InterruptedException {
 		mutex.acquire();
-		if(vagon2 < N) subir.release(); //Hasta que no suba el ultimo pasajero del vagon2, no paran de subir
+		if(vagon2 < N) {
+			
+			subir.release(); //Hasta que no suba el ultimo pasajero del vagon2, no paran de subir
+		
+		}
 		mutex.release();
 		
 		subir.acquire();

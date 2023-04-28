@@ -20,7 +20,7 @@ public class Bebe extends Thread{
 				Thread.sleep(r.nextInt(2000));
 				g.entraBebe(id);
 				
-				Thread.sleep(r.nextInt(1000));
+				Thread.sleep(r.nextInt(100));
 				g.saleBebe(id);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

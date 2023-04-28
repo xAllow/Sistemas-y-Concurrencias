@@ -21,11 +21,12 @@ public class Cuerda {
 	 */
 	public  void entraDireccionNS(int id) throws InterruptedException{
 		mutex.acquire();
-		while(nBabuinosNS == 3 || nBabuinosSN > 0){
+		if(nBabuinosNS == 3 || nBabuinosSN > 0){
 			mutex.release();
 			esperaNS.acquire();
 			mutex.acquire();
 		}
+		
 		nBabuinosNS++;
 		System.out.println("El babuino " + id + " se ha subido de NS, hay " + nBabuinosNS);
 		if(nBabuinosNS < MAX_Babuinos) esperaNS.release();
@@ -41,11 +42,12 @@ public class Cuerda {
 	 */
 	public  void entraDireccionSN(int id) throws InterruptedException{
 		mutex.acquire();
-		while(nBabuinosSN == 3 || nBabuinosNS > 0){
+		if(nBabuinosSN >= 3 || nBabuinosNS > 0){
 			mutex.release();
 			esperaSN.acquire();
 			mutex.acquire();
 		}
+		
 		nBabuinosSN++;
 		System.out.println("El babuino " + id + " se ha subido de SN, hay " + nBabuinosSN);
 		if(nBabuinosSN < MAX_Babuinos ) esperaSN.release();

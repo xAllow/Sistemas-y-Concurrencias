@@ -1,6 +1,6 @@
 package sensores;
 
-import java.util.Iterator;
+
 import java.util.concurrent.Semaphore;
 
 public class Mediciones {

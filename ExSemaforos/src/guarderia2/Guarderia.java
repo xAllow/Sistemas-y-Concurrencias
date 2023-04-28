@@ -57,9 +57,11 @@ public class Guarderia {
 	 * 
 	 */
 	public void saleAdulto(int id) throws InterruptedException{
+		mutex1.acquire();
 		if((nBebes)<=(3*(nAdulto-1))) {
 			saleAD.release();
 		}
+		mutex1.release();
 		saleAD.acquire();
 		mutex1.acquire();
 		nAdulto--;
