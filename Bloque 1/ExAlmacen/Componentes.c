@@ -15,7 +15,7 @@ int Lista_Vacia(Lista lista){
 y devuelve el numero de elementos de dicha lista.
 */
 int Num_Elementos(Lista  lista){
-    int elem = 0;
+   int elem = 0;
     while(lista != NULL){
         elem++;
         lista = lista->sig;
